@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>第1章：STM32 开发环境与第一个工程</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header container">
+    <h1 class="site-title">第1章：开发环境与第一个工程</h1>
+    <nav class="site-nav">
+      <a href="../index.html">返回首页</a>
+    </nav>
+  </header>
+  <main class="container">
+    <h2>目标</h2>
+    <ul>
+      <li>安装工具链（STM32CubeIDE / arm-none-eabi / OpenOCD 等）</li>
+      <li>创建第一个 STM32 项目并点亮 LED</li>
+    </ul>
+    <h2>步骤概览</h2>
+    <ol>
+      <li>安装 STM32CubeIDE 或 使用 Make + toolchain</li>
+      <li>新建工程，选择你的 STM32 型号</li>
+      <li>配置时钟、GPIO，编写点亮 LED 的 main.c</li>
+    </ol>
+    <h2>示例代码片段</h2>
+    <pre><code>// 简单 GPIO 点亮示例（伪代码）
+#include "stm32f1xx.h"
+
+int main(void){
+  // 使能 GPIO 时钟
+  RCC->APB2ENR |= (1<<2); // 根据具体系列修改
+  // 配置 PA5 为推挽输出
+  GPIOA->CRL &= ~(0xF << (5*4));
+  GPIOA->CRL |= (0x1 << (5*4));
+  while(1){
+    GPIOA->ODR |= (1<<5); // LED ON
+    for(volatile int i=0;i<100000;i++);
+    GPIOA->ODR &= ~(1<<5); // LED OFF
+    for(volatile int i=0;i<100000;i++);
+  }
+}
+</code></pre>
+    <p>（这里可以放更完整的步骤、截图与可下载示例工程压缩包）</p>
+  </main>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

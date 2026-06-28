@@ -1,0 +1,26 @@
+:root{
+  --bg:#f7f8fb;
+  --accent:#0b5cff;
+  --text:#222;
+  --muted:#666;
+  --container-width:1000px;
+}
+*{box-sizing:border-box}
+body{
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color:var(--text);
+  background:var(--bg);
+  margin:0;
+  line-height:1.6;
+}
+.container{max-width:var(--container-width);margin:0 auto;padding:24px}
+.site-header{background:white;border-bottom:1px solid #e6e9ef;overflow:hidden}
+.site-title{margin:0;padding:16px 0;display:inline-block;font-size:20px}
+.site-nav{float:right}
+.site-nav a{margin-left:16px;color:var(--muted);text-decoration:none}
+.hero{background:white;padding:32px;border-radius:6px;margin:20px 0}
+.btn{display:inline-block;padding:10px 16px;background:var(--accent);color:white;border-radius:4px;text-decoration:none}
+.site-footer{padding:16px;text-align:center;color:var(--muted);margin-top:40px}
+@media (max-width:700px){
+  .site-nav{float:none;margin-top:8px}
+}
